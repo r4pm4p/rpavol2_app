@@ -27,7 +27,7 @@ const attemptToLogin = async () => {
       //@ts-expect-error
       request.setToken(response.content.token)
     })
-    .catch((err) => {})
+    .catch(() => {})
 }
 </script>
 <template>

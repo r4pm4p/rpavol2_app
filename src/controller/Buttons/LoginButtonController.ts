@@ -1,4 +1,4 @@
-export default interface LoginButtonController {
+export default interface ButtonController {
   isLoading: boolean
   isDisabled: boolean
 }
