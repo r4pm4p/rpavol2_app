@@ -33,5 +33,6 @@ const registerNewUser = async () => {
     <Password :reference="registerNewUserPayload" reference-name="password" />
     <RegisterButton @click="registerNewUser" />
     {{ registerNewUserPayload }}
+    teste
   </div>
 </template>
