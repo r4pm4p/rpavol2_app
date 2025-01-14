@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import PasswordController from '@/application/controller/PasswordController'
+
 const props = defineProps({
+  controller: PasswordController,
   reference: Object,
   referenceName: String,
 })

@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import EmailController from '@/application/controller/EmailController'
+
 const props = defineProps({
+  controller: EmailController,
   reference: Object,
   referenceName: String,
 })

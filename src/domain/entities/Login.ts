@@ -7,11 +7,13 @@ export default class Login {
   public email: string
   public password: string
   private request: Request
+  public errors: object
 
   constructor() {
     this.request = requestStore().request
     this.email = ''
     this.password = ''
+    this.errors = {}
   }
 
   attemptToLogin = async () => {
@@ -27,6 +29,8 @@ export default class Login {
           alert('sucesso')
         })
     } catch (e) {
+      //@ts-expect-error
+      requestStore().setErrors(e.message as string)
       //@ts-expect-error
       alert(e.message)
     }
