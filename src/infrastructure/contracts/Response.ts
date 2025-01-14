@@ -1,5 +1,5 @@
-export default interface ApiResponse {
+export default interface Response {
   status: string
   message: string
-  content: Object
+  content: any
 }

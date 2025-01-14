@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type ButtonController from '@/application/controller/Buttons/LoginButtonController'
-import type { PropType } from 'vue'
+import ButtonController from '@/application/controller/ButtonController'
+import { type PropType, type Ref } from 'vue'
 
 const props = defineProps({
-  controller: Object as PropType<ButtonController>,
+  controller: ButtonController,
 })
 </script>
 <template>

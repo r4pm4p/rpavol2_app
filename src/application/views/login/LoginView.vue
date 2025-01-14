@@ -1,41 +1,28 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import LoginButton from '@/application/components/buttons/LoginButton.vue'
 import Email from '@/application/components/inputs/Email.vue'
 import Password from '@/application/components/inputs/Password.vue'
-import type LoginButtonController from '@/application/controller/Buttons/LoginButtonController'
-import type LoginRequest from '@/domain/entities/Login'
-import type ApiResponse from '@/infrastructure/contracts/Response'
-import { requestStore } from '@/infrastructure/stores/requestStore'
-import { ref, type Ref } from 'vue'
+import ButtonController from '@/application/controller/ButtonController'
+import Login from '@/domain/entities/Login'
 
-const request = requestStore().request
+/**
+ * @description Controladores de componentes, sendo os controladores que define as mudanças visuais
+ *  dos componentes da aplicação
+ */
+const buttonController = reactive(new ButtonController())
 
-const buttonController: Ref<LoginButtonController> = ref({
-  isDisabled: false,
-  isLoading: false,
-})
-
-const loginPayload: Ref<LoginRequest> = ref({
-  email: '',
-  password: '',
-})
-
-const attemptToLogin = async () => {
-  await request
-    .store('/login', loginPayload.value)
-    .then((response: ApiResponse) => {
-      //@ts-expect-error
-      request.setToken(response.content.token)
-    })
-    .catch(() => {})
-}
+/**
+ * @description Classes de dominio, sendo as classes que de fado possuem regras e funcionalidades
+ */
+const login = reactive(new Login())
 </script>
 <template>
   <div class="flex flex-col gap-1">
-    <Email :reference="loginPayload" reference-name="email" />
-    <Password :reference="loginPayload" reference-name="password" />
+    <Email :reference="login" reference-name="email" />
+    <Password :reference="login" reference-name="password" />
     <hr />
-    <LoginButton :controller="buttonController" @click="attemptToLogin" />
-    {{ loginPayload }}
+    <LoginButton :controller="buttonController" @click="login.attemptToLogin" />
+    {{ login }}
   </div>
 </template>

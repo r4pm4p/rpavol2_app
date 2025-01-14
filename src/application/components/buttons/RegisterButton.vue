@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type LoginButtonController from '@/application/controller/Buttons/LoginButtonController'
+import type LoginButtonController from '@/application/controller/ButtonController'
 import type { PropType } from 'vue'
 
 const props = defineProps({
