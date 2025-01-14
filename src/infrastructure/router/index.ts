@@ -1,0 +1,29 @@
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('@/application/views/HomeView.vue'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/application/views/login/LoginView.vue'),
+    },
+    {
+      path: '/register/user',
+      name: 'register user',
+      component: () => import('@/application/views/register/RegisterUser.vue'),
+    },
+    {
+      path: '/register/mc',
+      name: 'register mc',
+      component: () => import('@/application/views/register/RegisterUser.vue'),
+    },
+  ],
+})
+
+export default router
