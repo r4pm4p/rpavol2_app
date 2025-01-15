@@ -20,11 +20,7 @@ export default class Request {
       let response: any = await this.request.get(route)
       return await response.data
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          return {}
-        }
-      }
+      throw new Error('axs_error')
     }
   }
 
@@ -36,11 +32,7 @@ export default class Request {
 
       return await response.data
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          return await error.response.data
-        }
-      }
+      throw new Error('axs_error')
     }
   }
 
@@ -52,11 +44,7 @@ export default class Request {
 
       return await response.data
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          return await error.response.data
-        }
-      }
+      throw new Error('axs_error')
     }
   }
 
@@ -68,16 +56,16 @@ export default class Request {
 
       return await response.data
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          return await error.response.data
-        }
-      }
+      throw new Error('axs_error')
     }
   }
 
   public async setToken(token: string) {
     const bearerToken = `Bearer ${token}`
     this.request.defaults.headers.common['Authorization'] = `${bearerToken}`
+  }
+
+  public getToken() {
+    return this.request.defaults.headers.common['Authorization']
   }
 }

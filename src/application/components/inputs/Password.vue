@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import PasswordController from '@/application/controller/PasswordController'
+import ComponentController from '@/application/controller/ComponentController'
 
 const props = defineProps({
-  controller: PasswordController,
+  controller: ComponentController,
   reference: Object,
   referenceName: String,
 })
@@ -14,4 +14,7 @@ const props = defineProps({
     placeholder="Secret Pass....."
     v-model="props.reference![props.referenceName!]"
   />
+  <p v-if="props.controller?.errorMessage" class="text-rose-600 text-sm">
+    {{ props.controller?.errorMessage }}
+  </p>
 </template>

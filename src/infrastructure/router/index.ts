@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { requestStore } from '../stores/requestStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: () => import('@/application/views/home/HomeView.vue'),
     },

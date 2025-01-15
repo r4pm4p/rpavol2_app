@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { requestStore } from '@/infrastructure/stores/requestStore'
+
+const request = requestStore().request
+</script>
 
 <template>
-  <h1 class="bg-slate-700">HOME</h1>
+  <p>token: {{ request.getToken() }}</p>
 </template>
