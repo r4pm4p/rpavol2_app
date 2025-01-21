@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { requestStore } from '../stores/requestStore'
+import ProtectedRoutesRules from '@/domain/rules/ProtectedRoutesRules'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,15 +21,24 @@ const router = createRouter({
     },
     {
       path: '/register/user',
-      name: 'register user',
+      name: 'register_user',
       component: () => import('@/application/views/register/RegisterUser.vue'),
     },
     {
       path: '/register/mc',
-      name: 'register mc',
-      component: () => import('@/application/views/register/RegisterUser.vue'),
+      name: 'register_mc',
+      component: () => import('@/application/views/register/RegisterMc.vue'),
     },
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  const token = requestStore().request.getToken()
+  if (ProtectedRoutesRules.can(to.name as string, token)) return next()
+  else
+    return next({
+      name: 'login',
+    })
 })
 
 export default router

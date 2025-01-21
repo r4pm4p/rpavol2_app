@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { requestStore } from '@/infrastructure/stores/requestStore'
 import LogoRapmap from '@/application/components/misc/LogoRapmap.vue'
 import CTOSecion from './sections/CTOSecion.vue'
 import AuthSection from './sections/AuthSection.vue'
 import VisitorsSection from './sections/VisitorsSection.vue'
-
-const request = requestStore().request
 </script>
 
 <template>
