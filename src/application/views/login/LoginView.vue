@@ -8,9 +8,7 @@ import ButtonController from '@/application/controller/ButtonController'
 import Login from '@/domain/entities/Login'
 import ComponentController from '@/application/controller/ComponentController'
 import { requestStore } from '@/infrastructure/stores/requestStore'
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
 /**
  * @description Watcher global para que seja pego via PiniaStore as mensagens de erro, e partir disso
  *  realizar as atualizações visuais no componente desejado
@@ -36,7 +34,6 @@ const actionCallback = async () => {
     buttonController.isLoading = false
     buttonController.isDisabled = false
   })
-  // .finally(() => router.push('/home'))
 }
 
 /**

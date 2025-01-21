@@ -1,7 +1,7 @@
 import { requestStore } from '@/infrastructure/stores/requestStore'
 
 export default class ProtectedRoutesRules {
-  static openRoutes = ['login', 'register_user', 'home']
+  static openRoutes = ['login', 'register_user', 'home', 'visitors_home']
 
   static can = (route: string, token: string) => {
     return true

@@ -2,6 +2,7 @@ import type Request from '@/infrastructure/api/Request'
 import type Response from '@/infrastructure/contracts/Response'
 import { errorStore } from '@/infrastructure/stores/errorsStore'
 import { requestStore } from '@/infrastructure/stores/requestStore'
+import RegisterUserRule from '../rules/RegisterUserRule'
 
 export default class User {
   public name: string
@@ -18,6 +19,7 @@ export default class User {
 
   registerNewUser = async () => {
     try {
+      RegisterUserRule.validate(this)
       return await this.request
         .store('/register/user', {
           name: this.name,
