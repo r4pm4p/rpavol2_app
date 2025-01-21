@@ -29,10 +29,13 @@ const isPasswordEquals = computed(() => {
     {{ props.controller?.errorMessage }}
   </p>
   <input
+    v-if="doubleCheck"
     class="p-3 border rounded-md mt-1 mb-1"
     type="password"
     placeholder="Repeat Password....."
     v-model="doubleCheckPassword"
   />
-  <p v-if="!isPasswordEquals" class="text-rose-600 text-sm">Passwords won't match</p>
+  <p v-if="doubleCheck" v-show="!isPasswordEquals" class="text-rose-600 text-sm">
+    Passwords won't match
+  </p>
 </template>
