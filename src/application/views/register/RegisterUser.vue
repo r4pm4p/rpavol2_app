@@ -26,7 +26,7 @@ const registerNewUser = async () => {
   <div class="flex flex-col gap-1">
     <Text :reference="user" reference-name="name" placeholder="Name....." />
     <Email :reference="user" reference-name="email" />
-    <Password :reference="user" reference-name="password" />
+    <Password :reference="user" reference-name="password" doubleCheck />
     <RegisterButton @click="registerNewUser" />
     {{ user }}
   </div>
