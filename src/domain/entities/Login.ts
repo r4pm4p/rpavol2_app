@@ -28,11 +28,7 @@ export default class Login {
           if (res.status == '200') return this.loginWithSuccess(res.content.token)
         })
     } catch (e: any) {
-      if (e.message === 'axs_error') {
-        alert('Api respondeu com erru')
-      } else {
-        errorStore().setErrors(e.message)
-      }
+      errorStore().setErrors(e.message)
     }
   }
 

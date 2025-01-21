@@ -20,7 +20,7 @@ export default class Request {
       let response: any = await this.request.get(route)
       return await response.data
     } catch (error) {
-      throw new Error('axs_error')
+      throw new Error(JSON.stringify({ api: error }))
     }
   }
 
@@ -32,7 +32,7 @@ export default class Request {
 
       return await response.data
     } catch (error) {
-      throw new Error('axs_error')
+      throw new Error(JSON.stringify({ api: error }))
     }
   }
 
@@ -44,7 +44,7 @@ export default class Request {
 
       return await response.data
     } catch (error) {
-      throw new Error('axs_error')
+      throw new Error(JSON.stringify({ api: error }))
     }
   }
 
@@ -56,7 +56,7 @@ export default class Request {
 
       return await response.data
     } catch (error) {
-      throw new Error('axs_error')
+      throw new Error(JSON.stringify({ api: error }))
     }
   }
 
